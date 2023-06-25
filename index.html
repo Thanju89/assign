@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Panel</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #left-panel {
+      width: 20%;
+      background-color: #f1f1f1;
+      font-size: 20px;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+    #content {
+      flex: 1;
+      padding: 20px;
+    }
+   a{
+    text-decoration: none;
+   }
+   li{
+    list-style-type: none;
+   }
+  
+   #contact,#home,#information,#guide{
+    text-align: center;
+    padding: 20%;
+    font-size: 20px;
+   }
+  </style>
+</head>
+<body>
+  <div id="left-panel">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#information">Information</a></li>
+      <li><a href="#guide">Guide</a></li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <div id="home">
+      <h2>Welcome to the Home Page</h2>
+      <p>This is the home page content.</p>
+    </div>
+
+    <div id="contact" style="display: none;">
+      <h2>Contact Information</h2>
+      <p>This is the contact information page.</p>
+    </div>
+
+    <div id="information" style="display: none;">
+      <h2>Information</h2>
+      <p>This is the information page.</p>
+    </div>
+
+    <div id="guide" style="display: none;">
+      <h2>Guide</h2>
+      <p>This is the guide page.</p>
+    </div>
+  </div>
+
+  <script>
+    const leftPanelLinks = document.querySelectorAll('#left-panel a');
+    const contentSections = document.querySelectorAll('#content > div');
+
+    leftPanelLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetSectionId = link.getAttribute('href').substring(1);
+        contentSections.forEach(section => {
+          section.style.display = section.id === targetSectionId ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
